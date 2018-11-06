@@ -1,0 +1,31 @@
+import personas.*
+import habitaciones.*
+describe "test para ver si las peronas pueden ingresar a distintas" {
+	//habitaciones
+	const living = new UsoGeneral()
+	const banio1 = new Banio()
+	//personas
+	const juan = new Persona()
+	const pedro = new Persona()
+	//dormitorio
+	const dormitorioDeArriba = new Dormitorio()
+	// cocina
+	const cocina1 = new Cocina()
+	fixture{
+		juan.edad(17)
+		juan.tieneHabilidadesDeCocina(true)
+		pedro.edad(89)
+		dormitorioDeArriba.hacerDuenio(pedro)
+		cocina1.metrosCuadrados(10)
+		}
+	
+	
+	test "puede ingresar juan a el living" {
+		living.ingresarAHabitacion(juan)
+		assert.equals(#{juan},living.ocupantes())
+		}
+	test "puede ingresar juan a el dormitorio de arriba"{
+		dormitorioDeArriba.ingresarAHabitacion(juan)
+		assert.equals(#{juan}, dormitorioDeArriba.ocupantes())
+	}	
+}

@@ -1,0 +1,40 @@
+import personas.*
+import habitaciones.*
+describe "confort" {
+	//habitaciones
+	const living = new UsoGeneral()
+	const banio1 = new Banio()
+	//personas
+	const juan = new Persona()
+	const pedro = new Persona()
+	//dormitorio
+	const dormitorioDeArriba = new Dormitorio()
+	// cocina
+	const cocina1 = new Cocina()
+	fixture{
+		juan.edad(17)
+		juan.tieneHabilidadesDeCocina(true)
+		pedro.edad(89)
+		dormitorioDeArriba.hacerDuenio(pedro)
+		cocina1.metrosCuadrados(10)
+	}
+	
+	test "confort habitaciones uso general" {
+		
+		assert.equals(10,living.nivelDeConfort(juan))
+	}
+	
+	test "confort banio" {
+		assert.equals(12,banio1.nivelDeConfort(juan))
+	}
+	
+	test "confort dormitorio" {
+		assert.equals(10,dormitorioDeArriba.nivelDeConfort(juan))
+		assert.equals(20,dormitorioDeArriba.nivelDeConfort(pedro))
+		
+	}
+	
+	test "confort de cocina" {
+		assert.equals(11,cocina1.nivelDeConfort(juan))
+	}
+}
