@@ -7,6 +7,7 @@ describe "test para ver si las peronas pueden ingresar a distintas" {
 	//personas
 	const juan = new Persona()
 	const pedro = new Persona()
+	const mica = new Persona()
 	//dormitorio
 	const dormitorioDeArriba = new Dormitorio()
 	// cocina
@@ -17,6 +18,9 @@ describe "test para ver si las peronas pueden ingresar a distintas" {
 		pedro.edad(89)
 		dormitorioDeArriba.hacerDuenio(pedro)
 		cocina1.metrosCuadrados(10)
+		dormitorioDeArriba.hacerDuenio(mica)
+		banio1.ingresarAHabitacion(pedro)
+		
 		}
 	
 	
@@ -26,6 +30,10 @@ describe "test para ver si las peronas pueden ingresar a distintas" {
 		}
 	test "puede ingresar juan a el dormitorio de arriba"{
 		dormitorioDeArriba.ingresarAHabitacion(juan)
-		assert.equals(#{juan}, dormitorioDeArriba.ocupantes())
+		dormitorioDeArriba.ingresarAHabitacion(pedro)
+		assert.equals(#{pedro,juan}, dormitorioDeArriba.ocupantes())
 	}	
+	test "puede ingresar mica al banio" {
+		assert.throwsExceptionWithMessage("no cumple con los requisitos",{banio1.ingresarAHabitacion(mica)})
+	}
 }

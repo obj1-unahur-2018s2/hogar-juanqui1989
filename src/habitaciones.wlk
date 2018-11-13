@@ -82,7 +82,7 @@ class Cocina inherits Habitacion{
 		
 	}
 	override method puedeIngresar(persona) {
-		return ocupantes.any({p => p.tieneHabilidadesDeCocina() })
+		return !ocupantes.any({p => p.tieneHabilidadesDeCocina() })
 	}
 }
 
